@@ -20,7 +20,7 @@ Un assistant IA pour gérer tes fichiers. Tu lui parles, il s'occupe du reste.
 
 ## 📥 Installation
 
-1. Télécharge → [Releases](https://github.com/TONPSEUDO/yoris/releases)
+1. Télécharge → [Releases](https://github.com/gabinson45/yoris/releases)
 2. Mets ta clé API Gemini dans `config.txt` ([obtenir une clé gratuite](https://makersuite.google.com/app/apikey))
 3. Lance `Yoris.app`
 
