@@ -43,7 +43,7 @@ On a tous des centaines (voire des milliers) de fichiers éparpillés entre le B
 ### Télécharger l'app (recommandé)
 
 1. Allez dans [Releases](https://github.com/gabinson45/Yoris/releases)
-2. Téléchargez `Yoris.app` (Mac) ou `Yoris.exe` (Windows)
+2. Téléchargez `Yoris.app` (Mac) 
 3. Lancez l'application
 4. Configurez votre clé API Gemini (voir ci-dessous)
 
