@@ -67,3 +67,70 @@ Yoris utilise l'API Gemini de Google. Pour obtenir une clé :
 1. Rendez-vous sur [Google AI Studio](https://makersuite.google.com/app/apikey)
 2. Créez une clé API
 3. Collez-la dans le fichier `config.txt` :
+
+## Architecture
+Yoris/
+├── desktop_assistant_v3.py   # Moteur IA principal (recherche, tri, doublons)
+├── run_app.py                # Point d'entrée — GUI PyWebView + auth Supabase
+├── index.html                # Interface web embarquée
+├── auth_page.py              # Authentification (CustomTkinter)
+├── gui_modern.py             # Interface alternative (CustomTkinter)
+├── config.txt                # Configuration (clé API)
+└── Yoris.spec                # Build PyInstaller
+
+### Stack technique
+
+| Composant | Technologie |
+|---|---|
+| Moteur IA | Google Gemini API (`gemini-2.5-flash`) |
+| GUI principale | PyWebView + HTML/CSS/JS |
+| GUI alternative | CustomTkinter |
+| Analyse PDF | pdfminer |
+| Analyse Word | python-docx |
+| Doublons images | PIL + imagehash |
+| Authentification | Supabase Auth |
+| Distribution | PyInstaller |
+| Parallélisation | ThreadPoolExecutor (8 workers) |
+
+### Comment ça marche
+
+Requête utilisateur
+│
+▼
+Gemini (function calling)
+│
+├── scan_folder()        → Indexe les fichiers d'un dossier
+├── search_files()       → Recherche sémantique par contenu
+├── sort_folder()        → Tri en entonnoir (extension → nom → contenu)
+├── find_duplicates()    → Hash exact + imagehash perceptuel
+├── move_files()         → Déplacement avec historique d'annulation
+├── compress/extract()   → Gestion des archives
+└── undo()               → Annulation de la dernière action
+│
+▼
+Réponse en langage naturel
+
+## Roadmap
+
+- [x] Recherche sémantique de fichiers
+- [x] Organisation automatique par type et par thème
+- [x] Détection de doublons (hash + images)
+- [x] Interface desktop (PyWebView + CustomTkinter)
+- [x] Authentification utilisateur (Supabase)
+- [x] Build standalone Mac & Windows (PyInstaller)
+- [ ] Indexation persistante améliorée
+- [ ] Surveillance en temps réel des dossiers (watchdog)
+- [ ] Support d'autres LLMs (Claude, GPT-4)
+- [ ] Version web / SaaS
+
+## Contribuer
+
+Les contributions sont les bienvenues. Ouvrez une issue pour discuter des changements avant de soumettre une PR.
+
+## Licence
+
+MIT
+
+---
+
+Développé par [Gabin Giangreco](https://github.com/gabinson45)
